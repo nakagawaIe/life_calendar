@@ -1,0 +1,18 @@
+@import '../util';
+
+.gnav {
+  @include flex(center, center);
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(240, 205, 223);
+}
+
+.icnCalendar {
+  fill: rgb(120, 161, 238);
+  width: 60px;
+  display: block;
+  margin: 0 auto;
+}

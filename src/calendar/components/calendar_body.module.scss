@@ -1,0 +1,53 @@
+@import '../../_common/util';
+
+.head {
+  @include flex(between, center);
+}
+
+.button {
+  border: 1px solid #ccc;
+  padding: 2% 5%;
+  outline: none;
+}
+
+.calendar {
+  width: 100%;
+  table-layout: fixed;
+
+  th,
+  td {
+    height: 14.3vw;
+    border: 1px solid #ccc;
+    text-align: center;
+
+    &:first-of-type  {
+      color: red;
+    }
+
+    &:last-of-type {
+      color: blue;
+    }
+
+    &.noToMonth {
+      opacity: .2;
+    }
+  }
+
+  th {
+    padding: 5% 0;
+  }
+
+  td {
+    font-size: 12px;
+    vertical-align: top;
+    padding: 5px;
+
+    &:not(.noToMonth) {
+      cursor: pointer;
+    }
+
+    &.today {
+      color: green;
+    }
+  }
+}
