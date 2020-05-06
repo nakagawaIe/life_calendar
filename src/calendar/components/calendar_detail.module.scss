@@ -1,0 +1,113 @@
+@import '../../_common/util';
+
+$size: 5vw;
+
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.head {
+  position: relative;
+  padding: 4vw;
+  border-bottom: 2px solid $gray;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 4vw;
+  bottom: 0;
+  margin: auto;
+  background-color: transparent;
+  display: block;
+  border: none;
+  width: $size;
+  height: $size;
+  padding: 0;
+}
+
+.date {
+  text-align: center;
+  font-size: $size;
+  font-weight: bold;
+}
+
+.inputWrap {
+  padding: 8vw 4vw;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.box {
+  @include flex(between, center);
+  @include spfz(26);
+  padding-bottom: 8vw;
+  border-bottom: 2px solid $gray;
+  margin-bottom: 8vw;
+}
+
+.title {
+  width: 16vw;
+
+  img {
+    width: 10vw;
+  }
+}
+
+.right {
+  width: calc(100% - 16vw);
+}
+
+.work {
+  @include flex(0, center, wrap);
+
+  li {
+    width: 14vw;
+    cursor: pointer;
+    border-radius: 3px;
+    text-align: center;
+    margin: 1vw 4vw 1vw 0;
+  }
+}
+
+.active {
+  box-shadow: 0 0 0 3px #9ddaea;
+}
+
+.free {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid $gray;
+  padding: 1vw;
+  background-color: #fff;
+}
+
+.textarea {
+  height: 10em;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid $gray;
+  padding: 1vw;
+  resize: none;
+}
+
+.menstBtn {
+  @include flex(between, center);
+  width: 50vw;
+  margin: 0 auto;
+
+  li {
+    width: 46%;
+    cursor: pointer;
+    border: 1px solid $gray;
+    border-radius: 2vw;
+    padding: 3vw 0;
+    text-align: center;
+  }
+}

@@ -17,37 +17,17 @@
   th,
   td {
     height: 14.3vw;
-    border: 1px solid #ccc;
-    text-align: center;
-
-    &:first-of-type  {
-      color: red;
-    }
-
-    &:last-of-type {
-      color: blue;
-    }
+    border: 1px solid $gray;
 
     &.noToMonth {
       opacity: .2;
     }
   }
 
-  th {
-    padding: 5% 0;
-  }
-
   td {
-    font-size: 12px;
-    vertical-align: top;
-    padding: 5px;
-
-    &:not(.noToMonth) {
-      cursor: pointer;
-    }
-
-    &.today {
-      color: green;
+    &.noToMonth {
+      cursor: default;
+      pointer-events: none;
     }
   }
 }

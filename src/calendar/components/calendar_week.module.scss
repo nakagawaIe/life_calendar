@@ -1,0 +1,16 @@
+@import '../../_common/util';
+
+.root {
+  th {
+    padding: 5% 0;
+    text-align: center;
+
+    &:first-of-type  {
+      color: $sunday;
+    }
+
+    &:last-of-type {
+      color: $saturday;
+    }
+  }
+}

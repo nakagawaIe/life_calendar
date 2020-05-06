@@ -1,3 +1,8 @@
+$mainColor : #6c6c6c;
+$sunday : red;
+$saturday : blue;
+$gray : #ccc;
+
 @mixin flex($justify:0, $align:0, $wrap:0, $wrap_align:0, $column:0) {
   display: flex;
 
@@ -59,4 +64,12 @@
 
 @function vw($num) {
   @return #{$num / 375 * 100}vw;
+}
+
+@mixin fz($fontSize){
+	font-size: ($fontSize / 10) + rem;
+}
+
+@mixin spfz($fontSizeSp){
+	font-size: ($fontSizeSp / 750*100) + vw;
 }

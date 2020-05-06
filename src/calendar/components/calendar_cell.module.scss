@@ -1,22 +1,57 @@
+@import '../../_common/util';
 
-
-.tag {
+.inner {
+  @include spfz(22);
+  vertical-align: top;
+  padding: 5px;
+  cursor: pointer;
+  height: 100%;
   text-align: center;
-  padding: 3px 0;
-  color: #fff;
-  border-radius: 3px;
-  margin-top: 2px;
 }
 
-.work01 {
-  background-color: rgb(226, 184, 156);
+.today {
+  background-color: #fff8d1;
 }
-.work02 {
-  background-color: rgb(226, 156, 156);
+
+.date {
+  display: inline-block;
+  margin-bottom: 1.5vw;
 }
-.work03 {
-  background-color: rgb(161, 156, 226);
+
+.sunday {
+  color: $sunday;
 }
+
+.saturday {
+  color: $saturday;
+}
+
+.plan {
+  @include spfz(20);
+  margin-top: 1vw;
+}
+
+.dots {
+  @include flex(end);
+  margin-top: 2vw;
+
+  li {
+    width: 1.7vw;
+    height: 1.7vw;
+    border-radius: 50%;
+
+    & + li {
+      margin-left: 0.6vw;
+    }
+  }
+}
+
 .unti {
-  fill: rgb(197, 136, 67);
+  background-color: #a06e35;
+}
+.menst {
+  background-color: #c2429b;
+}
+.memo {
+  background-color: #a3a3a3;
 }

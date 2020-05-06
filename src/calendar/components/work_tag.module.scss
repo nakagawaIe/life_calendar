@@ -1,0 +1,25 @@
+@import '../../_common/util';
+
+.root {
+  text-align: center;
+  padding: 1vw 0;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.color_1 {
+  background-color: rgb(156, 169, 226);
+}
+.color_2 {
+  background-color: rgb(226, 156, 156);
+}
+.color_3 {
+  background-color: rgb(206, 156, 226);
+}
+.color_4 {
+  background-color: rgb(161, 156, 226);
+}
+.free {
+  border: 1px solid #ccc;
+  color: $mainColor;
+}
