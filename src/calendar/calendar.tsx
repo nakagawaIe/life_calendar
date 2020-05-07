@@ -4,7 +4,7 @@ import CalendarBody from './components/calendar_body';
 
 const Calendar = () => (
   <div className={style.root}>
-    カレンダー<br />
+    <h1 className={style.title}>Calendar</h1>
     <CalendarBody />
   </div>
 );

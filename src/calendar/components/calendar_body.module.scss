@@ -13,10 +13,10 @@
 .calendar {
   width: 100%;
   table-layout: fixed;
+  margin-top: 2vw;
 
   th,
   td {
-    height: 14.3vw;
     border: 1px solid $gray;
 
     &.noToMonth {
@@ -25,6 +25,8 @@
   }
 
   td {
+    height: 14.3vw;
+
     &.noToMonth {
       cursor: default;
       pointer-events: none;

@@ -6,7 +6,7 @@ import CalendarWeek from './calendar_week'
 import CalendarCell from './calendar_cell'
 
 const CalendarBody = () => {
-  const calendars = useSelector((state: { calendar: {calendars: ICalendar[] } }) => state.calendar.calendars);
+  const calendars = useSelector((state: { calendar: { calendars: ICalendar[] } }) => state.calendar.calendars);
 
   const now = new Date()
   const toYear = now.getFullYear()
@@ -78,9 +78,9 @@ const CalendarBody = () => {
   return (
     <div className={style.root}>
       <div className={style.head}>
-        <button className={style.button} onClick={() => setDateState(new Date(year, month - 1, 1))}>先月</button>
-        <h2>{year}年{month + 1}月</h2>
-        <button className={style.button} onClick={() => setDateState(new Date(year, month + 1, 1))}>次月</button>
+        <button className={style.button} onClick={() => setDateState(new Date(year, month - 1, 1))}>Prev</button>
+        <h2>{year}/{month + 1}</h2>
+        <button className={style.button} onClick={() => setDateState(new Date(year, month + 1, 1))}>Next</button>
       </div>
 
       <table className={style.calendar}>

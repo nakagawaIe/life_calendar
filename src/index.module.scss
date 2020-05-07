@@ -1,6 +1,10 @@
 @import './_common/reset';
 @import './_common/util';
 
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
 body {
+  font-family: 'Jost', 'Kosugi Maru', sans-serif;
   color: $mainColor;
 }

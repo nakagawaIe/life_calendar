@@ -67,9 +67,18 @@ $gray : #ccc;
 }
 
 @mixin fz($fontSize){
-	font-size: ($fontSize / 10) + rem;
+  font-size: ($fontSize / 10) + rem;
 }
 
 @mixin spfz($fontSizeSp){
-	font-size: ($fontSizeSp / 750*100) + vw;
+  font-size: ($fontSizeSp / 750*100) + vw;
+}
+
+@mixin pageTitle {
+  text-align: center;
+  padding: 3%;
+  color: #ca6da0;
+  background: linear-gradient(135deg, #ce298f1f 0%, #2c85dd1f 50%, #2ad3811f 100%);
+  letter-spacing: 0.05em;
+  margin-bottom: 4vw;
 }

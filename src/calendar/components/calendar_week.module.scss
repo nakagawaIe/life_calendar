@@ -2,7 +2,8 @@
 
 .root {
   th {
-    padding: 5% 0;
+    @include spfz(24);
+    padding: 3% 0;
     text-align: center;
 
     &:first-of-type  {
