@@ -4,9 +4,11 @@ import { ICalendar } from '../reducer/calendar_reducer';
 import style from './calendar_body.module.scss';
 import CalendarWeek from './calendar_week'
 import CalendarCell from './calendar_cell'
+import prevIcn from './icn/arrow_prev.svg'
+import nextIcn from './icn/arrow_next.svg'
 
 const CalendarBody = () => {
-  const calendars = useSelector((state: { calendar: { calendars: ICalendar[] } }) => state.calendar.calendars);
+  const calendars = useSelector((state: { calendar: { calendars: ICalendar[] | undefined } }) => state.calendar.calendars);
 
   const now = new Date()
   const toYear = now.getFullYear()
@@ -50,7 +52,7 @@ const CalendarBody = () => {
           dayCount += 1
         } else {
           const id = Number(`${year}${month + 1}${dayCount}`);
-          const getTodayData = calendars.find(c => c.id === id);
+          const getTodayData = calendars && calendars.find(c => c.id === id);
           const data = getTodayData?.data;
           calendar[w].push(
             <CalendarCell
@@ -78,9 +80,13 @@ const CalendarBody = () => {
   return (
     <div className={style.root}>
       <div className={style.head}>
-        <button className={style.button} onClick={() => setDateState(new Date(year, month - 1, 1))}>Prev</button>
+        <p className={style.button} onClick={() => setDateState(new Date(year, month - 1, 1))}>
+          <img src={prevIcn} alt="Prev" />
+        </p>
         <h2>{year}/{month + 1}</h2>
-        <button className={style.button} onClick={() => setDateState(new Date(year, month + 1, 1))}>Next</button>
+        <p className={style.button} onClick={() => setDateState(new Date(year, month + 1, 1))}>
+          <img src={nextIcn} alt="Next" />
+        </p>
       </div>
 
       <table className={style.calendar}>

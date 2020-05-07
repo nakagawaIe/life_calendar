@@ -1,12 +1,16 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { CALENDAR_ACTION_TYPE, ICalendarData, MENST } from '../reducer/calendar_reducer';
+import { CALENDAR_ACTION_TYPE, ICalendarData, MENST, EVENT } from '../reducer/calendar_reducer';
 import style from './calendar_detail.module.scss';
 import closeIcn from './icn/close.svg'
 import tieIcn from './icn/tie.svg'
 import editIcn from './icn/feather.svg'
 import toiletIcn from './icn/toilet.svg'
 import fruitIcn from './icn/fruit.svg'
+import eventIcn from './icn/event.svg'
+import heartIcn from './icn/heart.svg'
+import thundarIcn from './icn/thundar.svg'
+import bloodIcn from './icn/blood.svg'
 import noteIcn from './icn/technology.svg'
 import WorkTag from './work_tag'
 
@@ -20,11 +24,12 @@ interface IProps {
 
 const CalendarDetail = (props: IProps) => {
   const { year, month, date, data } = props;
-  const { work, plan, unti, menst, memo } = data;
+  const { work, plan, unti, menst, event, memo } = data;
   const [workState, setWorkState] = React.useState(work);
   const [planState, setPlanState] = React.useState(plan);
   const [untiState, setUntiState] = React.useState(unti);
   const [menstState, setMenstState] = React.useState(menst);
+  const [eventState, setEventState] = React.useState(event);
   const [memoState, setMemoState] = React.useState(memo);
 
   const dispatch = useDispatch();
@@ -32,16 +37,17 @@ const CalendarDetail = (props: IProps) => {
   const updateCalendar = React.useCallback(() => {
     dispatch({
       type: CALENDAR_ACTION_TYPE.CALENDAR_UPDATE,
+      id,
       data: {
-        id,
         work: workState,
         plan: planState,
         unti: untiState,
         menst: menstState,
+        event: eventState,
         memo: memoState,
       }
     })
-  }, [dispatch, id, workState, planState, untiState, menstState, memoState])
+  }, [dispatch, id, workState, planState, untiState, menstState, eventState, memoState])
 
   const closeDetail = () => {
     return props.closeHandler();
@@ -53,8 +59,15 @@ const CalendarDetail = (props: IProps) => {
   const updateUnti = (index: ICalendarData['unti']) => {
     setUntiState(index === untiState ? undefined : index);
   }
-  const updateMenst = (str: ICalendarData['menst']) => {
+  const updateMenst = (str: MENST) => {
     setMenstState(str === menstState ? undefined : str);
+  }
+  const updateEvent = (event: EVENT) => {
+    const set = new Set(eventState);
+    if (set.has(event)) set.delete(event)
+    else set.add(event)
+    const events = Array.from(set)
+    setEventState(events);
   }
   const changePlan = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlanState(e.target.value);
@@ -65,7 +78,7 @@ const CalendarDetail = (props: IProps) => {
 
   React.useEffect(() => {
     updateCalendar();
-  }, [workState, planState, updateCalendar]);
+  }, [workState, planState, untiState, menstState, eventState, memoState, updateCalendar]);
 
   return (
     <div className={style.root}>
@@ -92,7 +105,7 @@ const CalendarDetail = (props: IProps) => {
         <div className={style.box}>
           <h3 className={style.title}><img src={editIcn} alt="予定" /></h3>
           <div className={style.right}>
-            <input type="text" className={style.free} value={planState ?? ''} onChange={changePlan} />
+            <input type="text" className={style.free} value={planState ?? ''} onChange={changePlan} placeholder="予定" />
           </div>
         </div>
         <div className={style.box}>
@@ -115,9 +128,25 @@ const CalendarDetail = (props: IProps) => {
           </div>
         </div>
         <div className={style.box}>
+          <h3 className={style.title}><img src={eventIcn} alt="イベント" /></h3>
+          <div className={style.right}>
+            <ul className={style.work}>
+              <li className={event?.find(e => e === EVENT.SEX) ? style.active : ''} onClick={() => updateEvent(EVENT.SEX)}>
+                <img src={heartIcn} alt={EVENT.SEX} />
+              </li>
+              <li className={event?.find(e => e === EVENT.BAD) ? style.active : ''} onClick={() => updateEvent(EVENT.BAD)}>
+                <img src={thundarIcn} alt={EVENT.BAD} />
+              </li>
+              <li className={event?.find(e => e === EVENT.BLOOD) ? style.active : ''} onClick={() => updateEvent(EVENT.BLOOD)}>
+                <img src={bloodIcn} alt={EVENT.BLOOD} />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className={style.box}>
           <h3 className={style.title}><img src={noteIcn} alt="その他メモ" /></h3>
           <div className={style.right}>
-            <textarea className={style.textarea} value={memoState} onChange={changeMemo} />
+            <textarea className={style.textarea} value={memoState} onChange={changeMemo} placeholder="メモなど" />
           </div>
         </div>
       </div>

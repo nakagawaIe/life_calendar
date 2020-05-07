@@ -2,18 +2,16 @@
 
 .head {
   @include flex(between, center);
+  padding: 0 4vw 3vw;
 }
 
 .button {
-  border: 1px solid #ccc;
-  padding: 2% 5%;
-  outline: none;
+  width: 8vw;
 }
 
 .calendar {
   width: 100%;
   table-layout: fixed;
-  margin-top: 2vw;
 
   th,
   td {

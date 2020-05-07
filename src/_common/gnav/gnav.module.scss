@@ -17,13 +17,12 @@
     height: 3px;
     background: linear-gradient(135deg, #ce298f5f 0%,#2c85dd5f 50%,#2ad3815f 100%);
     position: absolute;
-    top: 0;
+    top: -3px;
     left: 0;
   }
 
   li {
     width: 20vw;
-    padding: 3vw 4vw;
   }
 
   a {
@@ -31,6 +30,11 @@
     display: block;
     color: #8ab5e6;
     text-decoration: none;
+    padding: 3vw 4vw;
+
+    &.active {
+      background-color: #e7eaf1;
+    }
   }
 }
 

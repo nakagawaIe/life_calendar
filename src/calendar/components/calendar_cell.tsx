@@ -26,16 +26,17 @@ const CalendarCell = (props: IProps) => {
     <td className={className}>
       <div className={`${style.inner} ${today ? style.today : ''}`} onClick={toggleDetail}>
         <span
-          className={`${style.date} ${dayOfWeek === 0 ? style.sunday: '' || dayOfWeek === 6 ? style.saturday : ''}`}
+          className={`${style.date} ${dayOfWeek === 0 ? style.sunday : '' || dayOfWeek === 6 ? style.saturday : ''}`}
         >
           {date}
         </span>
-        { data?.work && <WorkTag index={data?.work} /> }
-        { data?.plan && <p className={style.plan}>{data?.plan}</p> }
+        {data?.work && <WorkTag index={data?.work} />}
+        {data?.plan && <p className={style.plan}>{data?.plan}</p>}
         <ul className={style.dots}>
-          { data?.unti && <li className={style.unti} /> }
-          { data?.menst && <li className={style.menst} /> }
-          { data?.memo && <li className={style.memo} /> }
+          {data?.unti && <li className={style.unti} />}
+          {data?.menst && <li className={style.menst} />}
+          {data?.event && data.event.length > 0 && <li className={style.event} />}
+          {data?.memo && <li className={style.memo} />}
         </ul>
       </div>
 

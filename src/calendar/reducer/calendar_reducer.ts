@@ -1,11 +1,16 @@
+const CALENDAR_STORAGE = 'calendar';
+
 enum TYPE {
-  CALENDAR_FETCH = 'CalendarFetch',
   CALENDAR_UPDATE = 'CalendarUpdate',
 }
-
 export enum MENST {
   START = 'start',
   STOP = 'stop',
+}
+export enum EVENT {
+  SEX = 'sex',
+  BAD = 'bad',
+  BLOOD = 'blood',
 }
 
 export interface ICalendar {
@@ -15,88 +20,62 @@ export interface ICalendar {
 export interface ICalendarData {
   work: number;
   plan: string;
-  menst: MENST.START | MENST.STOP;
   unti: number;
+  menst: MENST.START | MENST.STOP;
+  event: Array<EVENT>;
   memo: string;
 }
 
+interface IAction {
+  type: TYPE;
+  id: ICalendar['id'];
+  data: ICalendarData;
+}
+type IState = ReturnType<typeof initialState>;
+
+
 function initialState() {
+  const getCalendar = localStorage.getItem(CALENDAR_STORAGE);
+  const calendars = getCalendar ? JSON.parse(getCalendar) : [];
   return {
-    calendars: [
-      {
-        id: 2020522,
-        data: {
-          work: 2,
-          plan: 'むつみの誕生日',
-          menst: MENST.START,
-          unti: 2,
-          memo: 'その他なんでも記入OK'
-        }
-      },
-      {
-        id: 2020528,
-        data: {
-          work: 1,
-          plan: '',
-          menst: MENST.STOP,
-          unti: 1,
-          memo: 'テキストテキスト'
-        }
-      }
-    ] as ICalendar[],
-  };
+    calendars: calendars as ICalendar[],
+  }
 }
 
-function reducer(state = initialState(), action: any): IState {
+function reducer(state = initialState(), action: IAction): IState {
   switch (action.type) {
-    case TYPE.CALENDAR_FETCH: {
-      return {
-        ...state,
-        calendars: action.calendars,
-      };
-    }
     case TYPE.CALENDAR_UPDATE: {
       const { calendars } = state;
-      const { data } = action;
-      const target = calendars.find(c => c.id === data.id);
+      const { id, data } = action;
+      const target = calendars.find((c: ICalendar) => c.id === id);
       if (target) {
-        const removedCalendars = calendars.filter(c => c.id !== data.id)
+        const removedCalendars = calendars.filter((c: ICalendar) => c.id !== id)
         target.data = {
           work: data.work,
           plan: data.plan,
           unti: data.unti,
           menst: data.menst,
+          event: data.event,
           memo: data.memo,
         }
+        const newCalendar = removedCalendars.concat(target);
 
+        localStorage.setItem(CALENDAR_STORAGE, JSON.stringify(newCalendar));
         return {
           ...state,
-          calendars: removedCalendars.concat(target),
+          calendars: newCalendar,
         };
       }
       return {
         ...state,
-        calendars: calendars.concat(action.data),
+        calendars: calendars.concat({ id, data }),
       };
     }
   }
   return state;
 }
 
-
-// interface IActions {
-//   [TYPE.CALENDAR_FETCH]: {
-//     calendar: ICalendar;
-//   };
-//   [TYPE.CALENDAR_UPDATE]: {
-//     calendar: ICalendar;
-//   };
-// }
-
-// type Action = ActionTypeCreator<IActions>;
-type IState = ReturnType<typeof initialState>;
-
 export {
   reducer as CalendarReducer,
   TYPE as CALENDAR_ACTION_TYPE,
-};
+}
