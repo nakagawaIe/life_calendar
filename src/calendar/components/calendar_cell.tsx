@@ -11,6 +11,7 @@ interface IProps {
   date: number;
   dayOfWeek: number;
   today?: boolean;
+  menstPeriod?: boolean;
   data?: Partial<ICalendarData>;
 }
 
@@ -21,7 +22,7 @@ const CalendarCell = (props: IProps) => {
     showState ? setShowState(false) : setShowState(true)
   }
 
-  const { className, year, month, date, dayOfWeek, today, data } = props;
+  const { className, year, month, date, dayOfWeek, today, menstPeriod, data } = props;
   return (
     <td className={className}>
       <div className={`${style.inner} ${today ? style.today : ''}`} onClick={toggleDetail}>
@@ -34,7 +35,7 @@ const CalendarCell = (props: IProps) => {
         {data?.plan && <p className={style.plan}>{data?.plan}</p>}
         <ul className={style.dots}>
           {data?.unti && <li className={style.unti} />}
-          {data?.menst && <li className={style.menst} />}
+          {(data?.menst || menstPeriod) && <li className={style.menst} />}
           {data?.event && data.event.length > 0 && <li className={style.event} />}
           {data?.memo && <li className={style.memo} />}
         </ul>

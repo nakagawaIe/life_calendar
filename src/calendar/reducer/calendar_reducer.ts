@@ -14,7 +14,7 @@ export enum EVENT {
 }
 
 export interface ICalendar {
-  id: number;
+  id: string;
   data: ICalendarData;
 }
 export interface ICalendarData {
@@ -58,7 +58,7 @@ function reducer(state = initialState(), action: IAction): IState {
           event: data.event,
           memo: data.memo,
         }
-        const newCalendar = removedCalendars.concat(target);
+        const newCalendar = removedCalendars.concat(target).sort((a, b) => new Date(a.id) > new Date(b.id) ? 1 : -1);
 
         localStorage.setItem(CALENDAR_STORAGE, JSON.stringify(newCalendar));
         return {

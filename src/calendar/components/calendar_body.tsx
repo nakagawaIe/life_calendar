@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-import { ICalendar } from '../reducer/calendar_reducer';
+import { ICalendar, MENST } from '../reducer/calendar_reducer';
 import style from './calendar_body.module.scss';
 import CalendarWeek from './calendar_week'
 import CalendarCell from './calendar_cell'
@@ -8,7 +8,7 @@ import prevIcn from './icn/arrow_prev.svg'
 import nextIcn from './icn/arrow_next.svg'
 
 const CalendarBody = () => {
-  const calendars = useSelector((state: { calendar: { calendars: ICalendar[] | undefined } }) => state.calendar.calendars);
+  const calendars = useSelector((state: { calendar: { calendars: ICalendar[] } }) => state.calendar.calendars);
 
   const now = new Date()
   const toYear = now.getFullYear()
@@ -17,6 +17,13 @@ const CalendarBody = () => {
   const [dateState, setDateState] = React.useState(new Date(toYear, toMonth, 1));
   const year = dateState.getFullYear()
   const month = dateState.getMonth()
+
+  const toMonthCalendars = calendars.filter(c => {
+    const calendarDate = new Date(c.id);
+    return calendarDate.getFullYear() === year && calendarDate.getMonth() === month;
+  })
+  const toMonthMenstStart = toMonthCalendars.find(c => c.data.menst === MENST.START)?.id
+  const toMonthMenstStop = toMonthCalendars.find(c => c.data.menst === MENST.STOP)?.id
 
   const createCalendar = () => {
     const startDay = dateState.getDay() // 月の最初の日の曜日を取得
@@ -51,8 +58,8 @@ const CalendarBody = () => {
           )
           dayCount += 1
         } else {
-          const id = Number(`${year}${month + 1}${dayCount}`);
-          const getTodayData = calendars && calendars.find(c => c.id === id);
+          const id = `${year}-${month + 1}-${dayCount}`;
+          const getTodayData = toMonthCalendars.find(c => c.id === id);
           const data = getTodayData?.data;
           calendar[w].push(
             <CalendarCell
@@ -61,6 +68,7 @@ const CalendarBody = () => {
               date={dayCount}
               dayOfWeek={d}
               today={month === toMonth && dayCount === today}
+              menstPeriod={toMonthMenstStart && toMonthMenstStop ? id > toMonthMenstStart && id < toMonthMenstStop : false}
               data={data}
               key={id}
             />
@@ -74,7 +82,7 @@ const CalendarBody = () => {
 
   React.useEffect(() => {
     document.title = `Calendar - ${year}/${month + 1}`;
-    console.log(calendars)
+    console.log(toMonthCalendars)
   });
 
   return (

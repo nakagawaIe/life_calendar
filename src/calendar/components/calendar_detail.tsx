@@ -33,7 +33,7 @@ const CalendarDetail = (props: IProps) => {
   const [memoState, setMemoState] = React.useState(memo);
 
   const dispatch = useDispatch();
-  const id = Number(`${year}${month}${date}`);
+  const id = `${year}-${month}-${date}`;
   const updateCalendar = React.useCallback(() => {
     dispatch({
       type: CALENDAR_ACTION_TYPE.CALENDAR_UPDATE,
