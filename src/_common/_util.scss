@@ -2,6 +2,7 @@ $mainColor : #6c6c6c;
 $sunday : red;
 $saturday : blue;
 $gray : #ccc;
+$disable : #d8d8d8;
 
 @mixin flex($justify:0, $align:0, $wrap:0, $wrap_align:0, $column:0) {
   display: flex;

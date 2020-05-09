@@ -2,7 +2,6 @@
 
 .inner {
   @include spfz(22);
-  vertical-align: top;
   padding: 5px;
   cursor: pointer;
   height: 100%;
@@ -14,7 +13,6 @@
 }
 
 .date {
-  display: inline-block;
   margin-bottom: 1.5vw;
 }
 
@@ -29,32 +27,16 @@
 .plan {
   @include spfz(20);
   margin-top: 1vw;
+  word-break: break-all;
 }
 
 .dots {
-  @include flex(end);
+  @include flex(end, center, wrap);
   margin-top: 2vw;
 
   li {
-    width: 1.7vw;
-    height: 1.7vw;
-    border-radius: 50%;
-
-    & + li {
-      margin-left: 0.6vw;
-    }
+    width: 3.2vw;
+    height: 3.2vw;
+    padding: 0.3vw;
   }
-}
-
-.unti {
-  background-color: #a5651d;
-}
-.menst {
-  background-color: #c2429b;
-}
-.event {
-  background-color: #389e2a;
-}
-.memo {
-  background-color: #a3a3a3;
 }

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import './index.module.scss';
 import Calendar from './calendar/calendar';
+import Period from './period/period';
 import Setting from './setting/setting';
 import Gnav from './_common/gnav/gnav';
 
@@ -14,6 +15,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Calendar} />
+          <Route path='/period' component={Period} />
           <Route path='/setting' component={Setting} />
         </Switch>
 

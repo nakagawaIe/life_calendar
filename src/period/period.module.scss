@@ -1,0 +1,20 @@
+@import '../_common/util';
+
+.list {
+  width: 92%;
+  margin: 0 auto;
+  table-layout: fixed;
+  text-align: center;
+
+  th, td {
+    border: 1px solid $gray;
+    padding: 4%;
+  }
+
+  th {
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      width: 40%;
+    }
+  }
+}

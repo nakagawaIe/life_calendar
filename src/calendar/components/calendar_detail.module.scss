@@ -114,5 +114,10 @@ $size: 5vw;
     border-radius: 2vw;
     padding: 3vw 0;
     text-align: center;
+
+    &.disable{
+      pointer-events: none;
+      background-color: $disable;
+    }
   }
 }

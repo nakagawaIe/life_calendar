@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './gnav.module.scss'
 import calendarIcn from './icn/calendar.svg'
+import medicIcn from './icn/medic.svg'
 import settingIcn from './icn/setting.svg'
 
 const Gnav = () => {
@@ -10,6 +11,11 @@ const Gnav = () => {
       <li>
         <NavLink to='/' activeClassName={style.active} exact>
           <img src={calendarIcn} alt="カレンダー" className={style.icn} />
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/period' activeClassName={style.active} exact>
+          <img src={medicIcn} alt="周期" className={style.icn} />
         </NavLink>
       </li>
       <li>
