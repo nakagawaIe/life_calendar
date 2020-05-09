@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { CALENDAR } from '../../_common/strings';
 import { CALENDAR_ACTION_TYPE, ICalendarData, MENST, EVENT, IMenstPeriods } from '../reducer/calendar_reducer';
+import { IAction } from '../../setting/reducer/setting_reducer';
 import style from './calendar_detail.module.scss';
 import closeIcn from './icn/close.svg'
 import tieIcn from './icn/tie.svg'
@@ -27,16 +28,17 @@ interface IProps {
 const CalendarDetail = (props: IProps) => {
   const { year, month, date, data, menstPeriod } = props;
   const { work, plan, unti, menst, event, memo } = data;
-  const [workState, setWorkState] = React.useState(work);
-  const [planState, setPlanState] = React.useState(plan);
-  const [untiState, setUntiState] = React.useState(unti);
-  const [menstState, setMenstState] = React.useState(menst);
-  const [eventState, setEventState] = React.useState(event);
-  const [memoState, setMemoState] = React.useState(memo);
+  const [workState, setWorkState] = useState(work);
+  const [planState, setPlanState] = useState(plan);
+  const [untiState, setUntiState] = useState(unti);
+  const [menstState, setMenstState] = useState(menst);
+  const [eventState, setEventState] = useState(event);
+  const [memoState, setMemoState] = useState(memo);
+  const workTags = useSelector((state: { setting: { work: IAction['work'] } }) => state.setting.work);
 
   const dispatch = useDispatch();
   const id = `${year}/${month}/${date}`;
-  const updateCalendar = React.useCallback(() => {
+  const updateCalendar = useCallback(() => {
     dispatch({
       type: CALENDAR_ACTION_TYPE.CALENDAR_UPDATE,
       id,
@@ -85,7 +87,19 @@ const CalendarDetail = (props: IProps) => {
     setMemoState(e.target.value);
   }
 
-  React.useEffect(() => {
+  const createWorkElm = () => {
+    const elm = [];
+    for (let i = 0; i < workTags.length; i += 1) {
+      elm.push(
+        <li className={work === i ? style.active : ''} onClick={() => updateWork(i)} key={i}>
+          <WorkTag index={i} />
+        </li>
+      )
+    }
+    return elm;
+  }
+
+  useEffect(() => {
     updateCalendar();
   }, [workState, planState, untiState, menstState, eventState, memoState, updateCalendar]);
 
@@ -103,11 +117,10 @@ const CalendarDetail = (props: IProps) => {
           <h3 className={style.title}><img src={tieIcn} alt={CALENDAR.WORK} /></h3>
           <div className={style.right}>
             <ul className={style.work}>
-              <li className={work === 1 ? style.active : ''} onClick={() => updateWork(1)}><WorkTag index={1} /></li>
-              <li className={work === 2 ? style.active : ''} onClick={() => updateWork(2)}><WorkTag index={2} /></li>
-              <li className={work === 3 ? style.active : ''} onClick={() => updateWork(3)}><WorkTag index={3} /></li>
-              <li className={work === 4 ? style.active : ''} onClick={() => updateWork(4)}><WorkTag index={4} /></li>
-              <li className={work === 5 ? style.active : ''} onClick={() => updateWork(5)}><input type="text" className={style.free} placeholder={CALENDAR.FREE} /></li>
+              {createWorkElm().map(e => e)}
+              <li className={work === workTags.length + 1 ? style.active : ''} onClick={() => updateWork(workTags.length + 1)}>
+                <input type="text" className={style.free} placeholder={CALENDAR.FREE} />
+              </li>
             </ul>
           </div>
         </div>

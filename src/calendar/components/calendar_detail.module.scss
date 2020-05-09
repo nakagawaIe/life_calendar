@@ -86,19 +86,14 @@ $size: 5vw;
 }
 
 .free {
-  width: 100%;
-  border-radius: 3px;
-  border: 1px solid $gray;
-  padding: 1vw;
-  background-color: #fff;
+  @include spfz(24);
+  @include input;
 }
 
 .textarea {
+  @include spfz(24);
+  @include input;
   height: 10em;
-  width: 100%;
-  border-radius: 3px;
-  border: 1px solid $gray;
-  padding: 1vw;
   resize: none;
 }
 

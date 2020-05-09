@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ICalendarData, EVENT } from '../reducer/calendar_reducer';
 import { CALENDAR } from '../../_common/strings';
 import style from './calendar_cell.module.scss';
@@ -23,7 +23,7 @@ interface IProps {
 }
 
 const CalendarCell = (props: IProps) => {
-  const [showState, setShowState] = React.useState(false);
+  const [showState, setShowState] = useState(false);
 
   const toggleDetail = () => {
     showState ? setShowState(false) : setShowState(true)
@@ -38,7 +38,7 @@ const CalendarCell = (props: IProps) => {
         >
           {date}
         </p>
-        {data?.work && <WorkTag index={data?.work} />}
+        {data?.work !== undefined && <WorkTag index={data?.work} />}
         {data?.plan && <p className={style.plan}>{data?.plan}</p>}
         <ul className={style.dots}>
           {data?.unti && <li><img src={toiletIcn} alt={CALENDAR.UNTI} /></li>}

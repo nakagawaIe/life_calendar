@@ -5,6 +5,10 @@
   padding: 0 4vw 3vw;
 }
 
+.title {
+  @include spfz(38);
+}
+
 .button {
   width: 8vw;
 }

@@ -5,9 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
 body {
+  @include spfz(28);
   color: $mainColor;
   font-family: 'Jost', 'Kosugi Maru', sans-serif;
-  padding-top: 6vw;
+  padding: 6vw 0 14vw;
 }
 
 img {
@@ -16,5 +17,7 @@ img {
 }
 
 input, textarea {
+  @include spfz(28);
+  color: $mainColor;
   font-family: 'Jost', 'Kosugi Maru', sans-serif;
 }

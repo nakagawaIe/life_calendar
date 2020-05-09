@@ -1,65 +1,65 @@
-$mainColor : #6c6c6c;
-$sunday : red;
-$saturday : blue;
-$gray : #ccc;
-$disable : #d8d8d8;
+$mainColor: #6c6c6c;
+$sunday: red;
+$saturday: blue;
+$gray: #ccc;
+$disable: #d8d8d8;
 
 @mixin flex($justify:0, $align:0, $wrap:0, $wrap_align:0, $column:0) {
   display: flex;
 
   // justify-content水平方向揃え（第一引数）
   @if $justify == start { // 左揃え
-      justify-content: flex-start;
+    justify-content: flex-start;
   } @else if $justify == end { // 右揃え
-      justify-content: flex-end;
+    justify-content: flex-end;
   } @else if $justify == center { // 中央揃え
-      justify-content: center;
+    justify-content: center;
   } @else if $justify == between { // 両端配置
-      justify-content: space-between;
+    justify-content: space-between;
   } @else if $justify == around { // 均等配置
-      justify-content: space-around;
+    justify-content: space-around;
   }
 
   // align-items垂直方向揃え（第二引数）
   @if $align == start { // 上揃え
-      align-items: flex-start;
+    align-items: flex-start;
   } @else if $align == end { // 下揃え
-      align-items: flex-end;
+    align-items: flex-end;
   } @else if $align == center { // 中央揃え
-      align-items: center;
+    align-items: center;
   } @else if $align == baseline { // ベースライン
-      align-items: baseline;
+    align-items: baseline;
   } @else if $align == stretch { // 高さ揃え
-      align-items: stretch;
+    align-items: stretch;
   }
 
   // flex-wrap子要素の折り返し設定（第三引数）
   @if $wrap == nowrap { // 折り返ししない
-      flex-wrap: nowrap;
+    flex-wrap: nowrap;
   } @else if $wrap == wrap { // 上から下
-      flex-wrap: wrap;
+    flex-wrap: wrap;
   } @else if $wrap == reverse { // 下から上
-      flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
   }
 
   // align-content複数行設定（第四引数）
   @if $wrap_align == start { // 上揃え
-      align-content: flex-start;
+    align-content: flex-start;
   } @else if $wrap_align == end { // 下揃え
-      align-content: flex-end;
+    align-content: flex-end;
   } @else if $wrap_align == center { // 中央揃え
-      align-content: center;
+    align-content: center;
   } @else if $wrap_align == between { // 両端配置
-      align-content: space-between;
+    align-content: space-between;
   } @else if $wrap_align == around { // 均等配置
-      align-content: space-around;
+    align-content: space-around;
   } @else if $wrap_align == stretch { // 高さ揃え
-      align-content: stretch;
+    align-content: stretch;
   }
 
   // 縦並び（第五引数）
   @if $column == 1 {
-      flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -67,10 +67,18 @@ $disable : #d8d8d8;
   @return #{$num / 375 * 100}vw;
 }
 
-@mixin fz($fontSize){
+@mixin fz($fontSize) {
   font-size: ($fontSize / 10) + rem;
 }
 
-@mixin spfz($fontSizeSp){
+@mixin spfz($fontSizeSp) {
   font-size: ($fontSizeSp / 750*100) + vw;
+}
+
+@mixin input() {
+  border-radius: 3px;
+  border: 1px solid $gray;
+  padding: 1vw;
+  width: 100%;
+  background-color: #fff;
 }

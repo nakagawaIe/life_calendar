@@ -1,0 +1,20 @@
+@import '../../_common/util';
+
+.root {
+  position: relative;
+  border-radius: 5vw;
+  border: 2px solid $gray;
+  padding: 8vw 5vw;
+  margin: 4vw 0 13vw;
+}
+
+.head {
+  @include spfz(35);
+  font-weight: bold;
+  padding: 0 0.7em;
+  margin-bottom: 5vw;
+  color: rgb(100, 60, 7);
+  background-color: #fff;
+  position: absolute;
+  top: -0.5em;
+}

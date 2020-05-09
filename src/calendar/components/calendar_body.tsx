@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { ICalendar, IMenstPeriods } from '../reducer/calendar_reducer';
+import { PAGE_TITLE } from '../../_common/strings';
 import style from './calendar_body.module.scss';
 import CalendarWeek from './calendar_week'
 import CalendarCell from './calendar_cell'
@@ -15,7 +16,7 @@ const CalendarBody = () => {
   const toYear = now.getFullYear()
   const toMonth = now.getMonth()
   const today = now.getDate()
-  const [dateState, setDateState] = React.useState(new Date(toYear, toMonth, 1));
+  const [dateState, setDateState] = useState(new Date(toYear, toMonth, 1));
   const year = dateState.getFullYear()
   const month = dateState.getMonth()
 
@@ -100,8 +101,8 @@ const CalendarBody = () => {
     return calendar
   }
 
-  React.useEffect(() => {
-    document.title = `Calendar - ${year}/${month + 1}`;
+  useEffect(() => {
+    document.title = `${year}/${month + 1} - ${PAGE_TITLE}`;
   });
 
   return (
@@ -110,7 +111,7 @@ const CalendarBody = () => {
         <p className={style.button} onClick={() => setDateState(new Date(year, month - 1, 1))}>
           <img src={prevIcn} alt="Prev" />
         </p>
-        <h2>{year}/{month + 1}</h2>
+        <h2 className={style.title}>{year}/{month + 1}</h2>
         <p className={style.button} onClick={() => setDateState(new Date(year, month + 1, 1))}>
           <img src={nextIcn} alt="Next" />
         </p>
