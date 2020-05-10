@@ -8,13 +8,14 @@
 
   th, td {
     border: 1px solid $gray;
-    padding: 4%;
+    padding: 4% 0;
+    vertical-align: middle;
   }
 
   th {
-    &:nth-of-type(1),
-    &:nth-of-type(2) {
-      width: 40%;
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      width: 33%;
     }
   }
 }

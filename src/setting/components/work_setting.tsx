@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { SETTING_ACTION_TYPE, IAction } from '../reducer/setting_reducer';
+import { SETTING_ACTION_TYPE, ISettingsWork } from '../reducer/setting_reducer';
 import style from './work_setting.module.scss';
 import WorkTag from '../../calendar/components/work_tag'
 
 const WorkSetting = () => {
-  const work = useSelector((state: { setting: { work: IAction['work'] } }) => state.setting.work);
+  const work = useSelector((state: { setting: { work: ISettingsWork } }) => state.setting.work);
   const [workState, setWorkState] = useState(work);
 
   const dispatch = useDispatch();
@@ -14,10 +14,9 @@ const WorkSetting = () => {
       type: SETTING_ACTION_TYPE.SETTING_UPDATE,
       work: workState,
     })
-  }, [dispatch, workState])
+  }, [dispatch, workState]);
 
-
-  function updateWork(index: number, e: React.ChangeEvent<HTMLInputElement>) {
+  const updateWork = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const newWorkState = workState.slice();
     newWorkState[index] = e.target.value;
     setWorkState(newWorkState);

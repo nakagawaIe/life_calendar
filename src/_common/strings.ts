@@ -11,14 +11,25 @@ export enum CALENDAR {
 }
 
 export enum PERIOD {
+  NUM = '何回前',
   START = '開始日',
   STOP = '終了日',
-  DIFF = '日数',
+  DIFF = '周期',
+  TITLE = 'あなたの周期は',
 }
 
 export enum SETTING {
   WORK_HEAD = '勤務タグのテキストを変更する',
-  WORK_READ = '6つまで自由に設定できます。',
+  WORK_READ = '6つまで自由に設定できるよ！',
   FILE_HEAD = 'データを引き継ぐ',
-  FILE_READ = 'データを引き継ぐ時にデータをエクスポートし、新しい端末でインポートしてください。'
+  FILE_READ = 'データをエクスポートし、別の端末でインポートすると、引き継ぐことができるよ！',
+  EXPORT = 'エクスポート',
+  IMPORT = 'インポート',
+  DOWNLOAD = 'ダウンロード',
+}
+
+export enum CONTACT {
+  READ = 'このアプリについてのご要望や質問、不具合などのお問い合わせはこちらからお気軽にどうぞ！',
+  TITLE_OPEN = 'お問い合わせフォームを開く',
+  TITLE_CLOSE = 'お問い合わせフォームを閉じる',
 }

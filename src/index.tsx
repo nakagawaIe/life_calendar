@@ -6,6 +6,7 @@ import { store } from './store';
 import './index.module.scss';
 import Calendar from './calendar/calendar';
 import Period from './period/period';
+import Other from './other/other';
 import Setting from './setting/setting';
 import Gnav from './_common/gnav/gnav';
 
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path='/' component={Calendar} />
           <Route path='/period' component={Period} />
+          <Route path='/other' component={Other} />
           <Route path='/setting' component={Setting} />
         </Switch>
 

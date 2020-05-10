@@ -28,7 +28,7 @@ const CalendarBody = () => {
   const isMenstPeriod = (id: string) => {
     const idDate = new Date(id);
     const isPeriod = menstPeriods.find(m => {
-      const start = m[0] as string;
+      const start = m[0];
       const startDate = new Date(start);
       const stopDate = m[1] ? new Date(m[1]) : now;
       return startDate <= idDate && idDate <= stopDate;

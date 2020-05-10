@@ -1,6 +1,6 @@
-$mainColor: #6c6c6c;
-$sunday: red;
-$saturday: blue;
+$mainColor: #8b8b8b;
+$sunday: #df908e;
+$saturday: #9b9ce2;
 $gray: #ccc;
 $disable: #d8d8d8;
 
@@ -81,4 +81,15 @@ $disable: #d8d8d8;
   padding: 1vw;
   width: 100%;
   background-color: #fff;
+}
+
+@mixin gradientLine($top: 0) {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #ce298f5f 0%,#2c85dd5f 50%,#2ad3815f 100%);
+  position: absolute;
+  left: 0;
+  top: $top;
 }

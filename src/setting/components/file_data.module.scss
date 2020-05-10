@@ -1,5 +1,39 @@
 @import '../../_common/util';
 
-// .root {
+.root {
+  dt {
+    @include spfz(30);
+    font-weight: bold;
+    position: relative;
+    padding-left: 4vw;
+    margin: 6vw auto 3vw;
 
-// }
+    &::before {
+      display: block;
+      content: "";
+      width: 2vw;
+      height: 2vw;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      border-radius: 50%;
+      background-color: rgb(49, 172, 209);
+    }
+  }
+}
+
+.export {
+  display: inline-block;
+  color: $mainColor;
+  border-radius: 10px;
+  padding: 2vw 6vw;
+  border: 1px solid $gray;
+  text-decoration: none;
+}
+
+.inport {
+  @include input;
+  border-radius: 10px;
+}

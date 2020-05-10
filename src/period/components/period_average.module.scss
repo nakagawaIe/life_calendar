@@ -1,0 +1,14 @@
+@import '../../_common/util';
+
+.root {
+  @include spfz(46);
+  text-align: center;
+  margin: 4vw auto 8vw;
+
+  span {
+    @include spfz(80);
+    color: $sunday;
+    display: inline-block;
+    padding: 0 0.2em;
+  }
+}

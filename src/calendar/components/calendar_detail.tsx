@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { CALENDAR } from '../../_common/strings';
 import { CALENDAR_ACTION_TYPE, ICalendarData, MENST, EVENT, IMenstPeriods } from '../reducer/calendar_reducer';
-import { IAction } from '../../setting/reducer/setting_reducer';
+import { ISettingsWork } from '../../setting/reducer/setting_reducer';
 import style from './calendar_detail.module.scss';
 import closeIcn from './icn/close.svg'
 import tieIcn from './icn/tie.svg'
@@ -34,7 +34,7 @@ const CalendarDetail = (props: IProps) => {
   const [menstState, setMenstState] = useState(menst);
   const [eventState, setEventState] = useState(event);
   const [memoState, setMemoState] = useState(memo);
-  const workTags = useSelector((state: { setting: { work: IAction['work'] } }) => state.setting.work);
+  const workTags = useSelector((state: { setting: { work: ISettingsWork } }) => state.setting.work);
 
   const dispatch = useDispatch();
   const id = `${year}/${month}/${date}`;
@@ -118,9 +118,9 @@ const CalendarDetail = (props: IProps) => {
           <div className={style.right}>
             <ul className={style.work}>
               {createWorkElm().map(e => e)}
-              <li className={work === workTags.length + 1 ? style.active : ''} onClick={() => updateWork(workTags.length + 1)}>
+              {/* <li className={work === workTags.length + 1 ? style.active : ''} onClick={() => updateWork(workTags.length + 1)}>
                 <input type="text" className={style.free} placeholder={CALENDAR.FREE} />
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

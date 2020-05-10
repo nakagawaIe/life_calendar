@@ -5,22 +5,25 @@
   padding: 1vw 0;
   color: #fff;
   border-radius: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .color_0 {
-  background-color: rgb(156, 169, 226);
+  background-color: rgb(156, 169, 228);
 }
 .color_1 {
-  background-color: rgb(226, 156, 156);
+  background-color: rgb(224, 157, 157);
 }
 .color_2 {
-  background-color: rgb(206, 156, 226);
+  background-color: rgb(226, 166, 215);
 }
 .color_3 {
-  background-color: rgb(161, 156, 226);
+  background-color: rgb(184, 158, 228);
 }
 .color_4 {
-  background-color: rgb(113, 185, 104);
+  background-color: rgb(127, 182, 119);
 }
 .color_5 {
   background-color: rgb(216, 196, 83);

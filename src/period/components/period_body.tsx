@@ -11,16 +11,13 @@ const PeriodBody = (props: IProps) => {
 
   return (
     <tbody className={style.root}>
-      {menstPeriods.map(m => {
-        const start = m[0] as string;
-        const stop = m[1];
-        const diffTime = stop ? new Date(stop).getTime() - new Date(start).getTime() : null;
-        const diff = diffTime ? Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1 : '-';
+      {menstPeriods.map((m, i) => {
         return (
-          <tr key={start}>
-            <td>{start}</td>
-            <td>{stop ?? '-'}</td>
-            <td>{diff}</td>
+          <tr key={i}>
+            <td>{i}</td>
+            <td>{m[0]}</td>
+            <td>{m[1] ?? '-'}</td>
+            <td>{m[2] ?? '-'}</td>
           </tr>
         )
       })}
