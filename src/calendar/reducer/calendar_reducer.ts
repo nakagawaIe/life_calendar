@@ -60,7 +60,6 @@ const getMenstPeriods = (calendars: ICalendar[]) => {
 function initialState() {
   const getCalendar = localStorage.getItem(CALENDAR_STORAGE);
   const calendars: ICalendar[] = getCalendar ? JSON.parse(getCalendar) : [];
-  console.log(getMenstPeriods(calendars))
 
   return {
     calendars: calendars as ICalendar[],

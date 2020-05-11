@@ -15,10 +15,10 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Calendar} />
-          <Route path='/period' component={Period} />
-          <Route path='/other' component={Other} />
-          <Route path='/setting' component={Setting} />
+          <Route exact path='/life-calendar' component={Calendar} />
+          <Route path='/life-calendar/period' component={Period} />
+          <Route path='/life-calendar/other' component={Other} />
+          <Route path='/life-calendar/setting' component={Setting} />
         </Switch>
 
         <Gnav />
