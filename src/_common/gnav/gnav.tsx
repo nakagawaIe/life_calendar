@@ -10,22 +10,22 @@ const Gnav = () => {
   return (
     <ul className={style.gnav}>
       <li>
-        <NavLink to='/life-calendar' activeClassName={style.active} exact>
+        <NavLink to='/' activeClassName={style.active} exact>
           <img src={calendarIcn} alt="カレンダー" className={style.icn} />
         </NavLink>
       </li>
       <li>
-        <NavLink to='/life-calendar/period' activeClassName={style.active} exact>
+        <NavLink to='/period' activeClassName={style.active} exact>
           <img src={medicIcn} alt="周期" className={style.icn} />
         </NavLink>
       </li>
       <li>
-        <NavLink to='/life-calendar/setting' activeClassName={style.active} exact>
+        <NavLink to='/setting' activeClassName={style.active} exact>
           <img src={settingIcn} alt="設定" className={style.icn} />
         </NavLink>
       </li>
       <li>
-        <NavLink to='/life-calendar/other' activeClassName={style.active} exact>
+        <NavLink to='/other' activeClassName={style.active} exact>
           <img src={otherIcn} alt="その他" className={style.icn} />
         </NavLink>
       </li>
