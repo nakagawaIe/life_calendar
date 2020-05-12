@@ -16,6 +16,7 @@ export enum PERIOD {
   STOP = '終了日',
   DIFF = '周期',
   TITLE = 'あなたの周期は',
+  NONE = '-',
 }
 
 export enum SETTING {

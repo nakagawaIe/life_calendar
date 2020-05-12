@@ -1,5 +1,6 @@
 import React from 'react';
 import { IMenstPeriods } from '../../calendar/reducer/calendar_reducer';
+import { PERIOD } from '../../_common/strings'
 import style from './period_body.module.scss';
 
 interface IProps {
@@ -16,8 +17,8 @@ const PeriodBody = (props: IProps) => {
           <tr key={i}>
             <td>{i}</td>
             <td>{m[0]}</td>
-            <td>{m[1] ?? '-'}</td>
-            <td>{m[2] ?? '-'}</td>
+            <td>{m[1] ?? PERIOD.NONE}</td>
+            <td>{m[2] ?? PERIOD.NONE}</td>
           </tr>
         )
       })}

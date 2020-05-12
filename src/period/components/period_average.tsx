@@ -8,13 +8,15 @@ interface IProps {
 }
 
 const PeriodAverage = (props: IProps) => {
-  const averages = props.menstPeriods.map(p => p[2]);
-  const average = Math.floor((averages.reduce((prev, current) => (prev ?? 0) + (current ?? 0)) ?? 0) / averages.length);
+  const averages = props.menstPeriods.map(p => p[2]).filter(Boolean);
+  let sum = 0;
+  averages.forEach(a => sum += a ?? 0);
+  const average = Math.floor(sum / averages.length);
 
   return (
     <p className={style.root}>
       {PERIOD.TITLE}
-      <span>{average}</span>
+      <span>{sum > 0 ? average : PERIOD.NONE}</span>
       日
     </p>
   )
